@@ -11,31 +11,33 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
-            GerenciadorBonificacao gerenciador = new GerenciadorBonificacao();
-
-            Funcionario ricardo = new Funcionario();
-
-            ricardo.Nome = "Ricardo";
-            ricardo.CPF = "012.234.567-06";
-            ricardo.Salario = 2000.00;
-            gerenciador.Registrar(ricardo);
-
-            Diretor jakeline = new Diretor();
-
-            jakeline.Nome = "Jakeline";
-            jakeline.CPF = "087.789.456-08";
-            jakeline.Salario = 5000.00;
-            gerenciador.Registrar(jakeline);
-
-            Console.WriteLine(ricardo.Nome);
-            Console.WriteLine(ricardo.GetBonificacao());
-
-            Console.WriteLine(jakeline.Nome);
-            Console.WriteLine(jakeline.GetBonificacao());
-
-            Console.WriteLine("Total de bonificações: " + gerenciador.GetTotalBonificacao());
+            CalcularBonificacao();
 
             Console.ReadLine();
+        }
+
+        public static void CalcularBonificacao()
+        {
+            GerenciadorBonificacao gerenciadorBonificacao = new GerenciadorBonificacao();
+
+            Funcionario pedro = new Designer("833.222.048-39");
+            pedro.Nome = "Pedro";
+
+            Funcionario roberta = new Diretor("159.753.398-04");
+            roberta.Nome = "Roberta";
+
+            Funcionario igor = new Auxiliar("981.198.778-53");
+            igor.Nome = "Igor";
+
+            Funcionario camila = new GerenteDeConta("326.985.628-89");
+            camila.Nome = "Camila";
+
+            gerenciadorBonificacao.Registrar(pedro);
+            gerenciadorBonificacao.Registrar(roberta);
+            gerenciadorBonificacao.Registrar(igor);
+            gerenciadorBonificacao.Registrar(camila);
+
+            Console.Write("Total de bonificação do mês " + gerenciadorBonificacao.GetTotalBonificacao());
         }
     }
 }
